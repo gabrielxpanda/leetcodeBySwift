@@ -116,3 +116,144 @@ class Solution {
 }
 
 */
+
+/*
+import UIKit
+
+class Solution {
+    func removeDuplicates(_ nums: inout [Int]) -> Int {
+        
+        var kcount = 0
+        
+        if nums.count > 1 {
+            
+            
+            var left = 0
+            var right = 1
+            var isOK = true
+            
+            repeat {
+                
+                if nums[left] == nums[right] {
+                   
+                    right = right + 1
+                    
+                }else if nums[left] < nums[right] {
+                    
+                    left = left + 1
+                    nums[left] = nums[right]
+                    right = right + 1
+                }
+                
+                if right >= nums.count {
+                    isOK = false
+                }
+                
+            }while(isOK)
+            
+            kcount = left + 1
+        }
+        
+        return kcount
+    }
+}
+
+ */
+
+/*
+import UIKit
+
+class Solution {
+    func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
+        
+        if nums.count < 1 {
+            return 0
+        }
+        
+        if nums.count == 1 {
+            if nums[0] == val {
+                return 0
+            }else {
+                return 1
+            }
+        }
+        
+        var count = 0
+        
+        var left = 0
+        var right = nums.count - 1
+        
+        var isOK = true
+        
+        repeat {
+            
+            
+            while nums[right] == val {
+                right = right - 1
+                
+                if right < 0 {
+                    break
+                }
+            }
+            
+            while nums[left] != val {
+                left = left + 1
+                if left > nums.count - 1 {
+                    
+                    break
+                }
+            }
+            
+            if left > right {
+                isOK = false
+            }else {
+               nums[left] = nums[right]
+               nums[right] = val
+            }
+            
+        } while(isOK)
+        
+        
+        count = left
+        
+        
+        return count
+    }
+}
+*/
+/*
+import UIKit
+class Solution {
+    func strStr(_ haystack: String, _ needle: String) -> Int {
+       
+        if needle.isEmpty {
+            return 0
+        }else if haystack.isEmpty {
+            return -1
+        } else if needle.count > haystack.count {
+            return -1
+        }else if needle.count == haystack.count {
+            if needle.elementsEqual(haystack) {
+                return 0
+            }
+            return -1
+        }else if !haystack.contains(needle) {
+            return -1
+        } else {
+          let arr =  haystack.components(separatedBy: needle)
+            if arr.count > 0 {
+                return arr.first!.count
+            }
+            return -1
+        }
+        
+    }
+}
+*/
+
+import UIKit
+class Solution {
+    func searchInsert(_ nums: [Int], _ target: Int) -> Int {
+        
+    }
+}
