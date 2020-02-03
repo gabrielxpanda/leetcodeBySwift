@@ -3,58 +3,50 @@ import UIKit
 
 class Solution {
     
-    func lengthOfLastWord(_ s: String) -> Int {
+    func plusOne(_ digits: [Int]) -> [Int] {
         
-        if s.count <= 0 { return 0 } //空字符串 返回0
+        var xxarray = [Int]()
         
-        if !s.contains(" ") { return s.count } //不包含空格，返回字符串的长度
+        var addon = false
         
-        if s == " " { return 0 } //" " 返回0
-        
-        
-        var firstblank = -1 //从后往前第1个空格位置
-        //var secondblank = -1 //从后往前第2个空格位置
-         var blanklen = -1
-        
-        for d in 0...s.count-1 {
-                   
-            let offset = s.count - 1 - d
+        for xx in 0...digits.count - 1 {
             
-          //  print("d = \(d);offset =\(offset)")
-            let char:Character = s[s.index(s.startIndex,offsetBy:offset)]
-            if char == Character.init(" ")  {
+            let index = digits.count - 1 - xx
+            
+            if index == digits.count - 1 {
                 
-                if firstblank == -1 {
-                    if offset < s.count - 1 {
-                        blanklen = d
-                        break
-                    }else {
-                       firstblank = offset
-                    }
-                    
-                }else if firstblank - offset > 1{
-                    blanklen = firstblank - offset - 1
-                    break
-                }else {
-                    firstblank = offset
+                if digits[index] + 1 >= 10 {
+                    addon = true
+                    xxarray.insert(0, at: 0)
+                }else{
+                    xxarray.insert(digits[index] + 1, at: 0)
                 }
                 
+            }else {
+                
+                if addon {
+                    if digits[index] + 1 >= 10 {
+                        addon = true
+                        xxarray.insert(0, at: 0)
+                    }else{
+                        addon = false
+                        xxarray.insert(digits[index] + 1, at: 0)
+                    }
+                }else {
+                     xxarray.insert(digits[index], at: 0)
+                }
+               
             }
-                   
+           // print("xxarray = \(xxarray)")
         }
-        
-        if blanklen == -1 {
-            blanklen = firstblank
+        if addon {
+            xxarray.insert(1, at: 0)
         }
+        return xxarray
         
-        
-        return blanklen
-        
-        
-    } //lengthOfLastWord
+    }
     
-    
-} //class Solution
+}
 
-print("num = \(Solution().lengthOfLastWord("da "))")
+print("num = \(Solution().plusOne([1,2,3,4]))")
 
